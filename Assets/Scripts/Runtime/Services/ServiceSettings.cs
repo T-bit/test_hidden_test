@@ -3,24 +3,16 @@
 namespace HiddenTest.Services
 {
     [Serializable]
-    public abstract class ServiceSettings : IServiceSettings
+    public abstract class ServiceSettings
     {
-        protected abstract Type Type { get; }
-        protected abstract Type ServiceType { get; }
-
-        #region IServiceSettings
-
-        Type IServiceSettings.Type => Type;
-        Type IServiceSettings.ServiceType => ServiceType;
-
-        #endregion
+        public Type Type => GetType();
+        public abstract Type ServiceType { get; }
     }
 
     [Serializable]
-    public abstract class ServiceSettings<TService, TInterface> : ServiceSettings
+    public abstract class ServiceSettings<TService> : ServiceSettings
         where TService : Service
     {
-        protected override Type Type => typeof(TInterface);
-        protected override Type ServiceType => typeof(TService);
+        public override Type ServiceType => typeof(TService);
     }
 }

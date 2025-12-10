@@ -10,8 +10,8 @@ namespace HiddenTest.Level
     {
         [SerializeReference]
         [SerializeReferencePicker]
-        private IServiceSettings[] _serviceSettingsList;
+        private ServiceSettings[] _serviceSettingsList;
 
-        public IReadOnlyList<IServiceSettings> ServiceSettingsList => _serviceSettingsList;
+        public IReadOnlyList<ServiceSettings> ServiceSettingsList => _serviceSettingsList;
     }
 }

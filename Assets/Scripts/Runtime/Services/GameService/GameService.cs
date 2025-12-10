@@ -12,7 +12,7 @@ using VContainer.Unity;
 namespace HiddenTest.Services
 {
     [UsedImplicitly]
-    public sealed class GameService : Service<IGameServiceSettings>,  IGameService
+    public sealed class GameService : Service<GameServiceSettings>,  IGameService
     {
         private readonly List<ObjectSettings> _objectSettingsList;
         private LevelView _levelView;
@@ -21,7 +21,7 @@ namespace HiddenTest.Services
         private string WinMessage => Settings.WinMessage;
         private string LooseMessage => Settings.LooseMessage;
 
-        public GameService(IGameServiceSettings settings, Transform rootTransform, IObjectResolver container)
+        public GameService(GameServiceSettings settings, Transform rootTransform, IObjectResolver container)
             : base(settings, rootTransform, container)
         {
             _objectSettingsList = new List<ObjectSettings>();
