@@ -9,7 +9,8 @@ namespace HiddenTest.LifetimeScopes
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<TStateController>();
+            builder.RegisterEntryPoint<TStateController>()
+                   .WithParameter(transform);
         }
     }
 }
