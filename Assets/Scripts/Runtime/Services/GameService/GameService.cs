@@ -9,37 +9,33 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace HiddenTest.StateControllers
+namespace HiddenTest.Services
 {
     [UsedImplicitly]
-    public sealed class GameStateController : StateController
+    public sealed class GameService : Service<IGameServiceSettings>,  IGameService
     {
-        private readonly GeneralSettings _generalSettings;
-        private readonly LevelSettings _levelSettings;
         private readonly List<ObjectSettings> _objectSettingsList;
         private LevelView _levelView;
 
-        private float TimerSeconds => _generalSettings.TimerSeconds;
-        private string WinMessage => _generalSettings.WinMessage;
-        private string LooseMessage => _generalSettings.LooseMessage;
+        private float TimerSeconds => Settings.TimerSeconds;
+        private string WinMessage => Settings.WinMessage;
+        private string LooseMessage => Settings.LooseMessage;
 
-        public GameStateController(GeneralSettings generalSettings, LevelSettings levelSettings, Transform rootTransform, IObjectResolver container)
-            : base(rootTransform, container)
+        public GameService(IGameServiceSettings settings, Transform rootTransform, IObjectResolver container)
+            : base(settings, rootTransform, container)
         {
-            _generalSettings = generalSettings;
-            _levelSettings = levelSettings;
             _objectSettingsList = new List<ObjectSettings>();
         }
 
         protected override UniTask OnStartAsync(CancellationToken cancellationToken)
         {
-            _levelView = Container.Instantiate(_levelSettings.LevelViewPrefab, RootTransform);
+            _levelView = Container.Instantiate(Settings.LevelViewPrefab, RootTransform);
 
             using (ListScope<ObjectView>.Create(out var objectViews))
             {
                 _levelView.ObjectViews.ToList(objectViews);
 
-                foreach (var objectSettings in _levelSettings.ObjectSettingsList)
+                foreach (var objectSettings in Settings.ObjectSettingsList)
                 {
                     if (!objectViews.TryGetFirst(item => item.Id == objectSettings.Id, out var objectView))
                     {
@@ -47,6 +43,7 @@ namespace HiddenTest.StateControllers
                         continue;
                     }
 
+                    objectViews.Remove(objectView);
                     _objectSettingsList.Add(objectSettings);
 
                     // TODO: UI Initialization
