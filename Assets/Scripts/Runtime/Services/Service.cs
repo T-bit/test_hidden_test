@@ -5,10 +5,9 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace HiddenTest.StateControllers
+namespace HiddenTest.Services
 {
-    [Serializable]
-    public abstract class StateController : IAsyncStartable, IDisposable
+    public abstract class Service : IService
     {
         protected IObjectResolver Container
         {
@@ -20,7 +19,7 @@ namespace HiddenTest.StateControllers
             get;
         }
 
-        protected StateController(Transform rootTransform, IObjectResolver container)
+        protected Service(Transform rootTransform, IObjectResolver container)
         {
             Container = container;
             RootTransform = rootTransform;
@@ -53,5 +52,20 @@ namespace HiddenTest.StateControllers
         }
 
         #endregion
+    }
+
+    public class Service<TSettings> : Service
+        where TSettings : IServiceSettings
+    {
+        protected TSettings Settings
+        {
+            get;
+        }
+
+        public Service(TSettings serviceSettings, Transform rootTransform, IObjectResolver container)
+            : base(rootTransform, container)
+        {
+            Settings = serviceSettings;
+        }
     }
 }

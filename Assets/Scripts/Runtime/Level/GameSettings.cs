@@ -1,18 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using HiddenTest.Attributes;
+using HiddenTest.Services;
+using UnityEngine;
 
 namespace HiddenTest.Level
 {
     [CreateAssetMenu(menuName = "HiddenTest/GameSettings",  fileName = "GameSettings")]
     public sealed class GameSettings : ScriptableObject
     {
-        [SerializeField]
-        private GeneralSettings _generalSettings;
+        [SerializeReference]
+        [SerializeReferencePicker]
+        private IServiceSettings[] _serviceSettingsList;
 
-        [SerializeField]
-        private LevelSettings _levelSettings;
-
-        public GeneralSettings GeneralSettings => _generalSettings;
-
-        public LevelSettings LevelSettings => _levelSettings;
+        public IReadOnlyList<IServiceSettings> ServiceSettingsList => _serviceSettingsList;
     }
 }

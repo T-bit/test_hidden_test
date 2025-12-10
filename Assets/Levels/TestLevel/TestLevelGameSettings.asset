@@ -12,22 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ffd77cbbb14daeae6607ae4305c3f9, type: 3}
   m_Name: TestLevelGameSettings
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.LevelSettings
-  _generalSettings:
-    _timerSeconds: 120
-    _winMessage: "\u041F\u0440\u043E\u0439\u0434\u0435\u043D\u043E"
-    _looseMessage: "\u041F\u043E\u0442\u0440\u0430\u0447\u0435\u043D\u043E"
-  _levelSettings:
-    _levelViewPrefab: {fileID: 2886763854494048056, guid: f7c944941c6fa9b48aeb299fe41adcb5, type: 3}
-    _objectSettingsList:
-    - _name: "\u0411\u043B\u043E\u043A\u043D\u043E\u0442"
-      _sprite: {fileID: 1833678193225129379, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
-    - _name: "\u0412\u0438\u0434\u0435\u043E\u043A\u0430\u043C\u0435\u0440\u0430"
-      _sprite: {fileID: 7955106931840298467, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
-    - _name: "\u041C\u0430\u0440\u043C\u0435\u043B\u0430\u0434"
-      _sprite: {fileID: 9221986691820486586, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
-    - _name: "\u041F\u043E\u0434\u0441\u0432\u0435\u0447\u043D\u0438\u043A"
-      _sprite: {fileID: -7803944626479939457, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
-    - _name: "\u0420\u043E\u043B\u0438\u043A\u0438"
-      _sprite: {fileID: -6585951881703832822, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
-    - _name: "\u0421\u043A\u0430\u043A\u0430\u043B\u043A\u0430"
-      _sprite: {fileID: -216077042396096999, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  _serviceSettingsList:
+  - rid: 2107441872903864413
+  references:
+    version: 2
+    RefIds:
+    - rid: 2107441872903864413
+      type: {class: GameServiceSettings, ns: HiddenTest.Services, asm: HiddenTest.Runtime}
+      data:
+        _timerSeconds: 120
+        _winMessage: "\u041F\u0440\u043E\u0439\u0434\u0435\u043D\u043E"
+        _looseMessage: "\u041F\u043E\u0442\u0440\u0430\u0447\u0435\u043D\u043E"
+        _levelViewPrefab: {fileID: 2886763854494048056, guid: f7c944941c6fa9b48aeb299fe41adcb5, type: 3}
+        _objectSettingsList:
+        - _name: "\u0411\u043B\u043E\u043A\u043D\u043E\u0442"
+          _sprite: {fileID: 1833678193225129379, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+        - _name: "\u0412\u0438\u0434\u0435\u043E\u043A\u0430\u043C\u0435\u0440\u0430"
+          _sprite: {fileID: 7955106931840298467, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+        - _name: "\u041C\u0430\u0440\u043C\u0435\u043B\u0430\u0434"
+          _sprite: {fileID: 9221986691820486586, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+        - _name: "\u041F\u043E\u0434\u0441\u0432\u0435\u0447\u043D\u0438\u043A"
+          _sprite: {fileID: -7803944626479939457, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+        - _name: "\u0420\u043E\u043B\u0438\u043A\u0438"
+          _sprite: {fileID: -6585951881703832822, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+        - _name: "\u0421\u043A\u0430\u043A\u0430\u043B\u043A\u0430"
+          _sprite: {fileID: -216077042396096999, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
