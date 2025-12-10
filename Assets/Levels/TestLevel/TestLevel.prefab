@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
       propertyPath: m_Name
-      value: Test Level
+      value: TestLevel
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -32,5 +32,188 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3794558362174998680, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2886763854494048056}
+    - targetCorrespondingSourceObject: {fileID: -4239885148308919480, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8783358096670732888}
+    - targetCorrespondingSourceObject: {fileID: -8125904844814589997, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7543208749013402858}
+    - targetCorrespondingSourceObject: {fileID: 2901480830739048167, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6964275065527366648}
+    - targetCorrespondingSourceObject: {fileID: 4932670622819390131, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 580331837315166724}
+    - targetCorrespondingSourceObject: {fileID: -7863562853185867754, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7487563688569586999}
+    - targetCorrespondingSourceObject: {fileID: -5042748290334425536, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7251874974358064735}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+--- !u!1 &1189563526075895812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4239885148308919480, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8783358096670732888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189563526075895812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd70732530b486badde4c41c2b6b0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
+  _spriteRenderer: {fileID: 5155702645834761035}
+--- !u!1 &1287632151444187647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4932670622819390131, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &580331837315166724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287632151444187647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd70732530b486badde4c41c2b6b0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
+  _spriteRenderer: {fileID: 1772085463384436865}
+--- !u!212 &1519865422186094385 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: -4558365347717487491, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1772085463384436865 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5565742177541016525, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1881910989734882274 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: -3479260228265357138, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2265709867858669196 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5394081228238640576, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5149242123437099866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7863562853185867754, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7487563688569586999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149242123437099866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd70732530b486badde4c41c2b6b0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
+  _spriteRenderer: {fileID: 7100179452666032415}
+--- !u!212 &5155702645834761035 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1307864060751099911, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5930401289523092209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2886763854494048056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930401289523092209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e77618d55e49b8afc4c686dc2013e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.LevelView
+  _objectViews:
+  - {fileID: 8783358096670732888}
+  - {fileID: 7543208749013402858}
+  - {fileID: 6964275065527366648}
+  - {fileID: 580331837315166724}
+  - {fileID: 7487563688569586999}
+  - {fileID: 7251874974358064735}
+--- !u!1 &6525777201338983583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8125904844814589997, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7543208749013402858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6525777201338983583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd70732530b486badde4c41c2b6b0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
+  _spriteRenderer: {fileID: 1881910989734882274}
+--- !u!212 &7100179452666032415 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: -5250584967003780525, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8047444863424922892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5042748290334425536, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7251874974358064735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047444863424922892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd70732530b486badde4c41c2b6b0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
+  _spriteRenderer: {fileID: 2265709867858669196}
+--- !u!1 &9074447738629397931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2901480830739048167, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+  m_PrefabInstance: {fileID: 6172969794847144780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6964275065527366648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074447738629397931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd70732530b486badde4c41c2b6b0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
+  _spriteRenderer: {fileID: 1519865422186094385}
