@@ -2,6 +2,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HiddenTest.Extensions;
+using HiddenTest.Input;
 using HiddenTest.Level;
 using HiddenTest.Scopes;
 using JetBrains.Annotations;
@@ -12,8 +13,9 @@ using VContainer.Unity;
 namespace HiddenTest.Services
 {
     [UsedImplicitly]
-    public sealed class GameService : Service<IGameServiceSettings>,  IGameService
+    public sealed class GameService : Service<GameServiceSettings>,  IGameService
     {
+        private readonly IInputService _inputService;
         private readonly List<ObjectSettings> _objectSettingsList;
         private LevelView _levelView;
 
@@ -21,9 +23,10 @@ namespace HiddenTest.Services
         private string WinMessage => Settings.WinMessage;
         private string LooseMessage => Settings.LooseMessage;
 
-        public GameService(IGameServiceSettings settings, Transform rootTransform, IObjectResolver container)
+        public GameService(IInputService inputService, GameServiceSettings settings, Transform rootTransform, IObjectResolver container)
             : base(settings, rootTransform, container)
         {
+            _inputService = inputService;
             _objectSettingsList = new List<ObjectSettings>();
         }
 
@@ -55,7 +58,22 @@ namespace HiddenTest.Services
                 }
             }
 
+            _inputService.ClickableClicked += OnClickableClicked;
+
             return UniTask.CompletedTask;
+        }
+
+        protected override void OnDispose()
+        {
+            _inputService.ClickableClicked -= OnClickableClicked;
+        }
+
+        private void OnClickableClicked(IClickable clickable)
+        {
+            if (clickable is ObjectView objectView)
+            {
+                Debug.Log($"Click object {objectView.Id}");
+            }
         }
     }
 }

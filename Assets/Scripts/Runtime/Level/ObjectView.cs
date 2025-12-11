@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using HiddenTest.Input;
+using UnityEngine;
 
 namespace HiddenTest.Level
 {
-    public sealed class ObjectView : MonoBehaviour
+    public sealed class ObjectView : MonoBehaviour, IClickable
     {
         [SerializeField]
         private SpriteRenderer _spriteRenderer;

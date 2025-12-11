@@ -55,7 +55,7 @@ namespace HiddenTest.Services
     }
 
     public class Service<TSettings> : Service
-        where TSettings : IServiceSettings
+        where TSettings : ServiceSettings
     {
         protected TSettings Settings
         {

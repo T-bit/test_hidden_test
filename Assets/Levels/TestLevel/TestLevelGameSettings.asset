@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.LevelSettings
   _serviceSettingsList:
   - rid: 2107441872903864413
+  - rid: 2107441872903864445
   references:
     version: 2
     RefIds:
@@ -37,3 +38,7 @@ MonoBehaviour:
           _sprite: {fileID: -6585951881703832822, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
         - _name: "\u0421\u043A\u0430\u043A\u0430\u043B\u043A\u0430"
           _sprite: {fileID: -216077042396096999, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+    - rid: 2107441872903864445
+      type: {class: InputServiceSettings, ns: HiddenTest.Services, asm: HiddenTest.Runtime}
+      data:
+        _inputModulePrefab: {fileID: 266251139488979079, guid: 20ddbdfa7960b3940bd082b201dd0a35, type: 3}
