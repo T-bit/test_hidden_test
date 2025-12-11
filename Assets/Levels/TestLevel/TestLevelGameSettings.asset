@@ -15,6 +15,7 @@ MonoBehaviour:
   _serviceSettingsList:
   - rid: 2107441872903864413
   - rid: 2107441872903864445
+  - rid: 2107441881680183397
   references:
     version: 2
     RefIds:
@@ -42,3 +43,7 @@ MonoBehaviour:
       type: {class: InputServiceSettings, ns: HiddenTest.Services, asm: HiddenTest.Runtime}
       data:
         _inputModulePrefab: {fileID: 266251139488979079, guid: 20ddbdfa7960b3940bd082b201dd0a35, type: 3}
+    - rid: 2107441881680183397
+      type: {class: UIServiceSettings, ns: HiddenTest.Services, asm: HiddenTest.Runtime}
+      data:
+        _uiModulePrefab: {fileID: 4191862885187991678, guid: 463f1fcd357ded747855d4809b8df6d0, type: 3}

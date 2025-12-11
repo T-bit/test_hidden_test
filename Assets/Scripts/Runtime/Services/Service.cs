@@ -62,10 +62,10 @@ namespace HiddenTest.Services
             get;
         }
 
-        public Service(TSettings serviceSettings, Transform rootTransform, IObjectResolver container)
+        public Service(TSettings settings, Transform rootTransform, IObjectResolver container)
             : base(rootTransform, container)
         {
-            Settings = serviceSettings;
+            Settings = settings;
         }
     }
 }
