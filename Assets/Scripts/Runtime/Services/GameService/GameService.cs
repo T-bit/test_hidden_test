@@ -66,6 +66,8 @@ namespace HiddenTest.Services
         protected override void OnDispose()
         {
             _inputService.ClickableClicked -= OnClickableClicked;
+            _levelView.Destroy(true);
+            _levelView = null;
         }
 
         private void OnClickableClicked(IClickable clickable)

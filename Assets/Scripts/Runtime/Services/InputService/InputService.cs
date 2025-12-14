@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HiddenTest.Extensions;
 using HiddenTest.Input;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -48,6 +49,8 @@ namespace HiddenTest.Services
 
             _inputActions.Dispose();
             _inputActions = null;
+            _inputModule.Destroy(true);
+            _inputModule = null;
         }
 
         private void OnClickPerformed(InputAction.CallbackContext context)
