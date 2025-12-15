@@ -85,6 +85,11 @@ namespace HiddenTest.Services
 
         public void Tick()
         {
+            if (_timer <= 0)
+            {
+                return;
+            }
+
             _timer -= Time.deltaTime;
 
             if (_timer <= 0)
