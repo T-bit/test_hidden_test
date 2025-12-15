@@ -5,26 +5,33 @@ using HiddenTest.Extensions;
 using HiddenTest.Input;
 using HiddenTest.Level;
 using HiddenTest.Scopes;
+using HiddenTest.UI;
 using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace HiddenTest.Services
 {
     [UsedImplicitly]
-    public sealed class LevelService : Service<LevelServiceSettings>,  ILevelService
+    public sealed class LevelService : Service<LevelServiceSettings>,  ILevelService, ITickable
     {
         private readonly IInputService _inputService;
         private readonly List<ObjectSettings> _objectSettingsList;
-        private LevelModule _levelModule;
+        private readonly LevelModule _levelModule;
+        private readonly ILevelScreen _levelScreen;
 
-        private float TimerSeconds => Settings.TimerSeconds;
+        private float _timer;
+
         private string WinMessage => Settings.WinMessage;
         private string LooseMessage => Settings.LooseMessage;
 
-        public LevelService(IInputService inputService, LevelModule levelModule, LevelServiceSettings settings, Transform rootTransform, IObjectResolver container)
+        private LevelScreenModel LevelScreenModel => _levelScreen.Model;
+
+        public LevelService(ILevelScreen levelScreen, IInputService inputService, LevelModule levelModule, LevelServiceSettings settings, Transform rootTransform, IObjectResolver container)
             : base(settings, rootTransform, container)
         {
+            _levelScreen = levelScreen;
             _inputService = inputService;
             _levelModule = levelModule;
             _objectSettingsList = new List<ObjectSettings>();
@@ -57,14 +64,15 @@ namespace HiddenTest.Services
             }
 
             _inputService.ClickableClicked += OnClickableClicked;
+            _timer = Settings.TimerSeconds;
 
-            return UniTask.CompletedTask;
+            return _levelScreen.ShowAsync(cancellationToken);
         }
 
         protected override void OnDispose()
         {
             _inputService.ClickableClicked -= OnClickableClicked;
-            _levelModule = null;
+            _objectSettingsList.Clear();
         }
 
         private void OnClickableClicked(IClickable clickable)
@@ -73,6 +81,19 @@ namespace HiddenTest.Services
             {
                 Debug.Log($"Click object {objectView.Id}");
             }
+        }
+
+        public void Tick()
+        {
+            _timer -= Time.deltaTime;
+
+            if (_timer <= 0)
+            {
+                _timer = 0;
+                // TODO: Loose message
+            }
+
+            LevelScreenModel.Timer = _timer;
         }
     }
 }

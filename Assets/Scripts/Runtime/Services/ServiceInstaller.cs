@@ -41,9 +41,8 @@ namespace HiddenTest.Services
     {
         protected override void OnInstall(IContainerBuilder builder)
         {
-            builder.Register<TService>(Lifetime.Scoped)
-                   .WithParameter(RootTransform)
-                   .AsImplementedInterfaces();
+            builder.RegisterEntryPoint<TService>(Lifetime.Scoped)
+                   .WithParameter(RootTransform);
         }
     }
 

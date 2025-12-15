@@ -1,49 +1,76 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 
 namespace HiddenTest.UI
 {
     public abstract class Fragment : IFragment
     {
-        protected abstract UniTask OnShowAsync();
-        protected abstract UniTask OnHideAsync();
+        private readonly FragmentModel _model;
+        private readonly FragmentView _view;
+
+        private event Action<IFragment> BeforeShow;
+        private event Action<IFragment> AfterHide;
+
+        protected Fragment(FragmentModel model, FragmentView  view)
+        {
+            _model = model;
+            _view = view;
+        }
 
         #region IFragment
 
-        UniTask IFragment.ShowAsync(CancellationToken cancellationToken)
+        event Action<IFragment> IFragment.BeforeShow
         {
-            return OnShowAsync();
+            add => BeforeShow += value;
+            remove => BeforeShow -= value;
         }
 
-        UniTask IFragment.HideAsync(CancellationToken cancellationToken)
+        event Action<IFragment> IFragment.AfterHide
         {
-            return OnHideAsync();
+            add => AfterHide += value;
+            remove => AfterHide -= value;
+        }
+
+        FragmentModel IFragment.Model => _model;
+        FragmentView IFragment.View => _view;
+
+        async UniTask IFragment.ShowAsync(CancellationToken cancellationToken)
+        {
+            BeforeShow?.Invoke(this);
+            await _view.ShowAsync(cancellationToken);
+        }
+
+        async UniTask IFragment.HideAsync(CancellationToken cancellationToken)
+        {
+            await _view.HideAsync(cancellationToken)
+                       .SuppressCancellationThrow();
+            AfterHide?.Invoke(this);
+            cancellationToken.ThrowIfCancellationRequested();
         }
 
         #endregion
     }
 
-    public abstract class Fragment<TFragmentModel, TFragmentView> : Fragment
+    public abstract class Fragment<TFragmentModel, TFragmentView> : Fragment, IFragment<TFragmentModel, TFragmentView>
         where TFragmentModel : FragmentModel
         where TFragmentView : FragmentView<TFragmentModel>
     {
         protected readonly TFragmentModel Model;
         protected readonly TFragmentView View;
 
-        protected Fragment(TFragmentModel model, TFragmentView  view)
+        protected Fragment(TFragmentModel model, TFragmentView view)
+            : base(model, view)
         {
             Model = model;
             View = view;
         }
 
-        protected override UniTask OnShowAsync()
-        {
-            throw new System.NotImplementedException();
-        }
+        #region IFragment<TFragmentModel, TFragmentView>
 
-        protected override UniTask OnHideAsync()
-        {
-            throw new System.NotImplementedException();
-        }
+        TFragmentModel IFragment<TFragmentModel, TFragmentView>.Model => Model;
+        TFragmentView IFragment<TFragmentModel, TFragmentView>.View => View;
+
+        #endregion
     }
 }

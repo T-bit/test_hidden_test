@@ -1,7 +1,6 @@
 ﻿namespace HiddenTest.UI
 {
-    public interface ILevelScreen : IFragment
+    public interface ILevelScreen : IFragment<LevelScreenModel, LevelScreenView>
     {
-
     }
 }

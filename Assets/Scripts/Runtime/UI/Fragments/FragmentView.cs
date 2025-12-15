@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using VContainer;
 
 namespace HiddenTest.UI
 {
@@ -22,5 +23,16 @@ namespace HiddenTest.UI
     public abstract class FragmentView<TFragmentModel> : FragmentView
         where TFragmentModel : FragmentModel
     {
+        protected TFragmentModel Model
+        {
+            get;
+            private set;
+        }
+
+        [Inject]
+        private void Initialize(TFragmentModel model)
+        {
+            Model = model;
+        }
     }
 }

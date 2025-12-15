@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HiddenTest.UI;
@@ -11,16 +12,23 @@ namespace HiddenTest.Services
     [UsedImplicitly]
     public sealed class UIService : Service, IUIService
     {
+        private readonly List<IFragment> _fragments;
         private UIModule _uiModule;
+
+        private RectTransform EnabledContainer => _uiModule.EnabledContainer;
+        private RectTransform DisabledContainer => _uiModule.DisabledContainer;
 
         public UIService(UIModule uiModule, IEnumerable<IFragment> fragments, Transform rootTransform, IObjectResolver container)
             : base(rootTransform, container)
         {
             _uiModule = uiModule;
+            _fragments = new List<IFragment>(fragments);
 
-            foreach (var fragment in fragments)
+            foreach (var fragment in _fragments)
             {
-                Debug.Log(fragment.GetType().Name);
+                fragment.BeforeShow += ShowFragment;
+                fragment.AfterHide += HideFragment;
+                HideFragment(fragment);
             }
         }
 
@@ -31,15 +39,35 @@ namespace HiddenTest.Services
 
         protected override void OnDispose()
         {
+            foreach (var fragment in _fragments)
+            {
+                fragment.BeforeShow -= ShowFragment;
+                fragment.AfterHide -= HideFragment;
+                HideFragment(fragment);
+            }
 
+            _fragments.Clear();
+            _uiModule = null;
         }
 
-        public TFragment GetFragment<TFragment>()
-            where TFragment : IFragment
+        private void ShowFragment(IFragment fragment)
         {
-            Debug.Log($"GetFragment {typeof(TFragment).Name})");
-
-            return default;
+            fragment.View.transform.SetParent(EnabledContainer, false);
         }
+
+        private void HideFragment(IFragment fragment)
+        {
+            fragment.View.transform.SetParent(DisabledContainer, false);
+        }
+
+        #region IUIService
+
+        TFragment IUIService.GetFragment<TFragment>()
+        {
+            return _fragments.OfType<TFragment>()
+                             .Single();
+        }
+
+        #endregion
     }
 }
