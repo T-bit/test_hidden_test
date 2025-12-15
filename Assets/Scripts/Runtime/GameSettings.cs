@@ -3,15 +3,15 @@ using HiddenTest.Attributes;
 using HiddenTest.Services;
 using UnityEngine;
 
-namespace HiddenTest.Level
+namespace HiddenTest
 {
     [CreateAssetMenu(menuName = "HiddenTest/GameSettings",  fileName = "GameSettings")]
     public sealed class GameSettings : ScriptableObject
     {
         [SerializeReference]
         [SerializeReferencePicker]
-        private ServiceSettings[] _serviceSettingsList;
+        private IServiceInstaller[] _serviceInstallers;
 
-        public IReadOnlyList<ServiceSettings> ServiceSettingsList => _serviceSettingsList;
+        public IEnumerable<IServiceInstaller> ServiceInstallers => _serviceInstallers;
     }
 }

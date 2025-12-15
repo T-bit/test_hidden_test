@@ -6,7 +6,7 @@ using UnityEngine;
 namespace HiddenTest.Services
 {
     [Serializable]
-    public sealed class GameServiceSettings : ServiceSettings<GameService>
+    public sealed class LevelServiceSettings : ServiceSettings<LevelService>
     {
         [SerializeField]
         [Min(0)]
@@ -19,7 +19,7 @@ namespace HiddenTest.Services
         private string _looseMessage;
 
         [SerializeField]
-        private LevelView _levelViewPrefab;
+        private LevelModule _levelModulePrefab;
 
         [SerializeField]
         private ObjectSettings[] _objectSettingsList;
@@ -27,7 +27,7 @@ namespace HiddenTest.Services
         public float TimerSeconds => _timerSeconds;
         public string WinMessage => _winMessage;
         public string LooseMessage => _looseMessage;
-        public LevelView LevelViewPrefab => _levelViewPrefab;
+        public LevelModule LevelModulePrefab => _levelModulePrefab;
         public IReadOnlyList<ObjectSettings> ObjectSettingsList => _objectSettingsList;
     }
 }

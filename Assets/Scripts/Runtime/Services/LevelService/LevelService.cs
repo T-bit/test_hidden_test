@@ -8,35 +8,33 @@ using HiddenTest.Scopes;
 using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace HiddenTest.Services
 {
     [UsedImplicitly]
-    public sealed class GameService : Service<GameServiceSettings>,  IGameService
+    public sealed class LevelService : Service<LevelServiceSettings>,  ILevelService
     {
         private readonly IInputService _inputService;
         private readonly List<ObjectSettings> _objectSettingsList;
-        private LevelView _levelView;
+        private LevelModule _levelModule;
 
         private float TimerSeconds => Settings.TimerSeconds;
         private string WinMessage => Settings.WinMessage;
         private string LooseMessage => Settings.LooseMessage;
 
-        public GameService(IInputService inputService, GameServiceSettings settings, Transform rootTransform, IObjectResolver container)
+        public LevelService(IInputService inputService, LevelModule levelModule, LevelServiceSettings settings, Transform rootTransform, IObjectResolver container)
             : base(settings, rootTransform, container)
         {
             _inputService = inputService;
+            _levelModule = levelModule;
             _objectSettingsList = new List<ObjectSettings>();
         }
 
         protected override UniTask OnStartAsync(CancellationToken cancellationToken)
         {
-            _levelView = Container.Instantiate(Settings.LevelViewPrefab, RootTransform);
-
             using (ListScope<ObjectView>.Create(out var objectViews))
             {
-                _levelView.ObjectViews.ToList(objectViews);
+                _levelModule.ObjectViews.ToList(objectViews);
 
                 foreach (var objectSettings in Settings.ObjectSettingsList)
                 {
@@ -66,8 +64,7 @@ namespace HiddenTest.Services
         protected override void OnDispose()
         {
             _inputService.ClickableClicked -= OnClickableClicked;
-            _levelView.Destroy(true);
-            _levelView = null;
+            _levelModule = null;
         }
 
         private void OnClickableClicked(IClickable clickable)

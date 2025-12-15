@@ -1,6 +1,6 @@
 ﻿namespace HiddenTest.Services
 {
-    public interface IGameService : IService
+    public interface ILevelService : IService
     {
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HiddenTest.Level
 {
-    public sealed class LevelView : MonoBehaviour
+    public sealed class LevelModule : MonoBehaviour
     {
         [SerializeField]
         private ObjectView[] _objectViews;

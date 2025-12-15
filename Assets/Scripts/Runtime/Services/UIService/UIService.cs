@@ -4,24 +4,22 @@ using HiddenTest.UI;
 using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace HiddenTest.Services
 {
     [UsedImplicitly]
-    public sealed class UIService : Service<UIServiceSettings>, IUIService
+    public sealed class UIService : Service, IUIService
     {
         private UIModule _uiModule;
 
-        public UIService(UIServiceSettings settings, Transform rootTransform, IObjectResolver container)
-            : base(settings, rootTransform, container)
+        public UIService(UIModule uiModule, Transform rootTransform, IObjectResolver container)
+            : base(rootTransform, container)
         {
+            _uiModule = uiModule;
         }
 
         protected override UniTask OnStartAsync(CancellationToken cancellationToken)
         {
-            _uiModule = Container.Instantiate(Settings.UIModulePrefab, RootTransform);
-
             return UniTask.CompletedTask;
         }
 
