@@ -9,15 +9,8 @@ namespace HiddenTest.Services
 {
     public abstract class Service : IService
     {
-        protected IObjectResolver Container
-        {
-            get;
-        }
-
-        protected Transform RootTransform
-        {
-            get;
-        }
+        protected readonly IObjectResolver Container;
+        protected readonly Transform RootTransform;
 
         protected Service(Transform rootTransform, IObjectResolver container)
         {
@@ -57,10 +50,7 @@ namespace HiddenTest.Services
     public class Service<TSettings> : Service
         where TSettings : ServiceSettings
     {
-        protected TSettings Settings
-        {
-            get;
-        }
+        protected readonly TSettings Settings;
 
         protected Service(TSettings settings, Transform rootTransform, IObjectResolver container)
             : base(rootTransform, container)
