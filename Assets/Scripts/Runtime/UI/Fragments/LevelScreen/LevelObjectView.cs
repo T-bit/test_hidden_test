@@ -2,15 +2,20 @@
 using Cysharp.Threading.Tasks;
 using HiddenTest.Extensions;
 using HiddenTest.Level;
+using HiddenTest.Services;
 using LitMotion;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace HiddenTest.UI
 {
     public sealed class LevelObjectView : MonoBehaviour
     {
+        [SerializeField]
+        private RectTransform _imageContainer;
+
         [SerializeField]
         private Image _image;
 
@@ -24,6 +29,13 @@ namespace HiddenTest.UI
         {
             get;
             private set;
+        }
+
+        [Inject]
+        private void Initialize(LevelObjectViewSettings settings)
+        {
+            _text.gameObject.SetActive(settings.ShowName);
+            _imageContainer.gameObject.SetActive(settings.ShowImage);
         }
 
         public void Set(ObjectSettings objectSettings, int index)

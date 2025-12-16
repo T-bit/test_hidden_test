@@ -12,10 +12,14 @@ namespace HiddenTest.Services
         [SerializeField]
         private LevelModule _levelModulePrefab;
 
+        [SerializeField]
+        private LevelObjectViewSettings  _levelObjectViewSettings;
+
         protected override void OnInstall(IContainerBuilder builder)
         {
             builder.RegisterComponentInNewPrefab(_levelModulePrefab, Lifetime.Scoped)
                    .UnderTransform(RootTransform);
+            builder.RegisterInstance(_levelObjectViewSettings);
 
             base.OnInstall(builder);
         }

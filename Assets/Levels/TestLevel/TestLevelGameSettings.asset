@@ -25,6 +25,9 @@ MonoBehaviour:
         _serviceSettings:
           rid: 2107441967232188490
         _levelModulePrefab: {fileID: 2886763854494048056, guid: f7c944941c6fa9b48aeb299fe41adcb5, type: 3}
+        _levelObjectViewSettings:
+          _showName: 0
+          _showImage: 1
     - rid: 2107441967232188490
       type: {class: LevelServiceSettings, ns: HiddenTest.Services, asm: HiddenTest.Runtime}
       data:
