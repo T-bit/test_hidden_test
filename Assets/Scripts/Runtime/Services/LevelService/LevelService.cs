@@ -36,6 +36,7 @@ namespace HiddenTest.Services
         private bool LevelObjectViewNeeded => _nextIndex <= _objects.Count;
         private bool GameFinished => AllFound || (Settings.TimerSeconds > 0 && _timer <= 0);
 
+        [Preserve]
         public LevelService(ILevelScreen levelScreen, IMessageWindow messageWindow, IInputService inputService, LevelModule levelModule, LevelServiceSettings settings, Transform rootTransform,
             IObjectResolver container)
             : base(settings, rootTransform, container)
