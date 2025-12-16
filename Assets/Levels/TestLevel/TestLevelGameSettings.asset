@@ -59,3 +59,4 @@ MonoBehaviour:
       type: {class: LevelScreenInstaller, ns: HiddenTest.UI, asm: HiddenTest.Runtime}
       data:
         _viewPrefab: {fileID: 7148156617475892470, guid: b10b3aecf9024274181bfc49a92065da, type: 3}
+        _levelObjectViewPrefab: {fileID: 4212666104267339963, guid: f458cacf78d469d44afaa3ebcd7ae259, type: 3}

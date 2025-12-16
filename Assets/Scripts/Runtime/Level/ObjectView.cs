@@ -1,4 +1,6 @@
-﻿using HiddenTest.Input;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
+using HiddenTest.Input;
 using UnityEngine;
 
 namespace HiddenTest.Level
@@ -11,9 +13,11 @@ namespace HiddenTest.Level
         // That'll work for now
         public string Id => _spriteRenderer?.sprite?.name;
 
-        public void Hide()
+        public UniTask HideAsync(CancellationToken cancellationToken)
         {
-            // TODO
+            //TODO
+            gameObject.SetActive(false);
+            return UniTask.CompletedTask;
         }
     }
 }

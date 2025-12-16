@@ -22,6 +22,10 @@ namespace HiddenTest.UI
             return uiService.GetFragment<TFragmentInterface>();
         }
 
+        protected virtual void OnInstall(IContainerBuilder builder)
+        {
+        }
+
         #region IInstaller
 
         void IInstaller.Install(IContainerBuilder builder)
@@ -32,6 +36,8 @@ namespace HiddenTest.UI
                    .As<IFragment>()
                    .AsSelf();
             builder.Register(GetFragment, Lifetime.Scoped);
+
+            OnInstall(builder);
         }
 
         #endregion
