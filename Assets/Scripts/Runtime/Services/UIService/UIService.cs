@@ -18,6 +18,7 @@ namespace HiddenTest.Services
         private RectTransform EnabledContainer => _uiModule.EnabledContainer;
         private RectTransform DisabledContainer => _uiModule.DisabledContainer;
 
+        [UnityEngine.Scripting.Preserve]
         public UIService(UIModule uiModule, IEnumerable<IFragment> fragments, Transform rootTransform, IObjectResolver container)
             : base(rootTransform, container)
         {

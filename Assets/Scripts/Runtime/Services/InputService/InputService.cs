@@ -23,6 +23,7 @@ namespace HiddenTest.Services
         private InputActions.GameActions GameActions => _inputActions.Game;
         private Vector2 PointerPosition => GameActions.Point.ReadValue<Vector2>();
 
+        [UnityEngine.Scripting.Preserve]
         public InputService(InputModule inputModule, Transform rootTransform, IObjectResolver container)
             : base(rootTransform, container)
         {

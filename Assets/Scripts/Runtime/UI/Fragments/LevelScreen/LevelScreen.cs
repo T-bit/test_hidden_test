@@ -6,6 +6,7 @@ using HiddenTest.Extensions;
 using HiddenTest.Level;
 using JetBrains.Annotations;
 using UnityEngine;
+using VContainer;
 
 namespace HiddenTest.UI
 {
@@ -19,6 +20,7 @@ namespace HiddenTest.UI
         private IReadOnlyList<ObjectSettings> Objects => Model.Objects;
         private RectTransform ObjectsContainer => View.ObjectsContainer;
 
+        [Preserve]
         public LevelScreen(Func<Transform, LevelObjectView> viewFactory, LevelScreenModel model, LevelScreenView view)
             : base(model, view)
         {
