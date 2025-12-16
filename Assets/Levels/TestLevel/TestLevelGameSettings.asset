@@ -29,9 +29,9 @@ MonoBehaviour:
       type: {class: LevelServiceSettings, ns: HiddenTest.Services, asm: HiddenTest.Runtime}
       data:
         _timerSeconds: 120
-        _winMessage: "\u041F\u0440\u043E\u0439\u0434\u0435\u043D\u043E"
-        _looseMessage: "\u041F\u043E\u0442\u0440\u0430\u0447\u0435\u043D\u043E"
-        _levelModulePrefab: {fileID: 2886763854494048056, guid: f7c944941c6fa9b48aeb299fe41adcb5, type: 3}
+        _showObjectCount: 3
+        _winMessage: "\u041F\u0420\u041E\u0419\u0414\u0415\u041D\u041E"
+        _looseMessage: "\u041F\u041E\u0422\u0420\u0410\u0427\u0415\u041D\u041E"
         _objectSettingsList:
         - _name: "\u0411\u043B\u043E\u043A\u043D\u043E\u0442"
           _sprite: {fileID: 1833678193225129379, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
@@ -59,3 +59,4 @@ MonoBehaviour:
       type: {class: LevelScreenInstaller, ns: HiddenTest.UI, asm: HiddenTest.Runtime}
       data:
         _viewPrefab: {fileID: 7148156617475892470, guid: b10b3aecf9024274181bfc49a92065da, type: 3}
+        _levelObjectViewPrefab: {fileID: 4212666104267339963, guid: f458cacf78d469d44afaa3ebcd7ae259, type: 3}

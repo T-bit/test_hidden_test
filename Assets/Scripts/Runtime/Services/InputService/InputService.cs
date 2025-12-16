@@ -77,7 +77,7 @@ namespace HiddenTest.Services
         private IClickable GetClickable()
         {
             var camera = Camera.main;
-            // TODO: Get camera
+            // TODO: Camera service
             var worldPoint = camera.ScreenToWorldPoint(PointerPosition);
             var hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 

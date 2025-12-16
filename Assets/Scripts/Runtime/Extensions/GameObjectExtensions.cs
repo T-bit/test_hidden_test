@@ -10,5 +10,21 @@ namespace HiddenTest.Extensions
         {
             Object.Destroy(self);
         }
+
+        public static void SetSelfComponent<TComponent>(this GameObject self, ref TComponent component)
+            where TComponent : Component
+        {
+            if (component != null)
+            {
+                return;
+            }
+
+            component =  self.GetComponent<TComponent>();
+
+            if (component == null)
+            {
+                Debug.LogError($"Missing component of type {typeof(TComponent)} on {self.name}");
+            }
+        }
     }
 }

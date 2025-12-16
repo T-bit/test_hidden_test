@@ -8,6 +8,11 @@ namespace HiddenTest.UI
         [SerializeField]
         private TMP_Text _timerText;
 
+        [SerializeField]
+        private RectTransform _objectsContainer;
+
+        public RectTransform ObjectsContainer => _objectsContainer;
+
         private float Timer => Model.Timer;
         private int Minutes => (int)(Timer / 60);
         private int Seconds => (int)(Timer % 60);

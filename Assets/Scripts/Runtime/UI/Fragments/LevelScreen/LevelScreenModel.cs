@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using HiddenTest.Level;
+using JetBrains.Annotations;
 
 namespace HiddenTest.UI
 {
@@ -6,5 +8,7 @@ namespace HiddenTest.UI
     public sealed class LevelScreenModel : FragmentModel
     {
         public float Timer { get; set; }
+
+        public IReadOnlyList<ObjectSettings>  Objects { get; set; }
     }
 }

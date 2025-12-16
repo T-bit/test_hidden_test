@@ -13,21 +13,22 @@ namespace HiddenTest.Services
         private float _timerSeconds;
 
         [SerializeField]
+        [Min(1)]
+        private int _showObjectCount = 1;
+
+        [SerializeField]
         private string _winMessage;
 
         [SerializeField]
         private string _looseMessage;
 
         [SerializeField]
-        private LevelModule _levelModulePrefab;
-
-        [SerializeField]
         private ObjectSettings[] _objectSettingsList;
 
         public float TimerSeconds => _timerSeconds;
+        public int ShowObjectCount => _showObjectCount;
         public string WinMessage => _winMessage;
         public string LooseMessage => _looseMessage;
-        public LevelModule LevelModulePrefab => _levelModulePrefab;
         public IReadOnlyList<ObjectSettings> ObjectSettingsList => _objectSettingsList;
     }
 }
