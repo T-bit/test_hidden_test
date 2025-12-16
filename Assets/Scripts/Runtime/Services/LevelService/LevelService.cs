@@ -22,13 +22,18 @@ namespace HiddenTest.Services
         private readonly ILevelScreen _levelScreen;
 
         private float _timer;
-        private int _currentIndex;
+        private int _nextIndex;
         private CancellationTokenSource _cancellationTokenSource;
 
+        private int ShowObjectCount => Settings.ShowObjectCount;
         private string WinMessage => Settings.WinMessage;
         private string LooseMessage => Settings.LooseMessage;
 
         private CancellationToken CancellationToken => _cancellationTokenSource.Token;
+
+        private bool AllFound => _nextIndex >= _objects.Count + ShowObjectCount;
+        private bool LevelObjectViewNeeded => _nextIndex <= _objects.Count;
+        private bool GameFinished => AllFound || (Settings.TimerSeconds > 0 && _timer <= 0);
 
         public LevelService(ILevelScreen levelScreen, IInputService inputService, LevelModule levelModule, LevelServiceSettings settings, Transform rootTransform, IObjectResolver container)
             : base(settings, rootTransform, container)
@@ -62,13 +67,13 @@ namespace HiddenTest.Services
                     objectViews.Remove(objectView);
                     _objects.Add(objectSettings);
 
-                    if (i > 2)
+                    if (i >= ShowObjectCount)
                     {
                         continue;
                     }
 
-                    _currentIndex++;
                     tasks.Add(_levelScreen.ShowObjectAsync(i, cancellationToken));
+                    _nextIndex++;
                 }
 
                 foreach (var objectView in objectViews)
@@ -96,19 +101,19 @@ namespace HiddenTest.Services
 
         private void OnClickableClicked(IClickable clickable)
         {
-            if (clickable is not ObjectView objectView)
+            if (GameFinished || clickable is not ObjectView objectView)
             {
                 return;
             }
 
             var index = _objects.FindIndex(item => item.Id == objectView.Id);
 
-            if (index < 0 || index > _currentIndex)
+            if (index < 0 || index >= _nextIndex)
             {
                 return;
             }
 
-            _currentIndex++;
+            _nextIndex++;
 
             SetNextAsync(CancellationToken).Forget();
 
@@ -120,14 +125,14 @@ namespace HiddenTest.Services
                 await UniTask.WhenAll(objectView.HideAsync(cancellationToken),
                     _levelScreen.HideObjectAsync(index, cancellationToken));
 
-                if (_currentIndex >= Settings.ObjectSettingsList.Count + 2)
+                if (AllFound)
                 {
                     // TODO Win message
                     Debug.Log(WinMessage);
                 }
-                else if (_currentIndex < Settings.ObjectSettingsList.Count)
+                else if (LevelObjectViewNeeded)
                 {
-                    await _levelScreen.ShowObjectAsync(_currentIndex, cancellationToken);
+                    await _levelScreen.ShowObjectAsync(_nextIndex - 1, cancellationToken);
                 }
             }
         }
@@ -136,7 +141,7 @@ namespace HiddenTest.Services
 
         void ITickable.Tick()
         {
-            if (_timer <= 0)
+            if (AllFound || _timer <= 0)
             {
                 return;
             }
