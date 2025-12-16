@@ -6,12 +6,11 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
-using VContainer.Unity;
 
 namespace HiddenTest.Services
 {
     [UsedImplicitly]
-    public sealed class InputService : Service<InputServiceSettings>, IInputService
+    public sealed class InputService : Service, IInputService
     {
         private InputModule _inputModule;
         private InputActions _inputActions;
@@ -23,14 +22,14 @@ namespace HiddenTest.Services
         private InputActions.GameActions GameActions => _inputActions.Game;
         private Vector2 PointerPosition => GameActions.Point.ReadValue<Vector2>();
 
-        public InputService(InputServiceSettings settings, Transform rootTransform, IObjectResolver container)
-            : base(settings, rootTransform, container)
+        public InputService(InputModule inputModule, Transform rootTransform, IObjectResolver container)
+            : base(rootTransform, container)
         {
+            _inputModule = inputModule;
         }
 
         protected override UniTask OnStartAsync(CancellationToken cancellationToken)
         {
-            _inputModule = Container.Instantiate(Settings.InputModulePrefab, RootTransform);
             _inputActions = new InputActions();
 
             GameActions.Click.performed += OnClickPerformed;
@@ -48,6 +47,7 @@ namespace HiddenTest.Services
 
             _inputActions.Dispose();
             _inputActions = null;
+            _inputModule = null;
         }
 
         private void OnClickPerformed(InputAction.CallbackContext context)
