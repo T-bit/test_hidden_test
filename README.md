@@ -29,3 +29,14 @@
 1. Создайте на GitHub публичный репозиторий с названием “Hidden Test”, выполняйте задание в нем и прикрепите при сдаче ссылку на него
 2. Прикрепите ссылку на билд (Google\Yandex Disk)
 3. Если вы решили использовать плагин не указанный в задании, то укажите это при сдаче задания и напишите почему решили его использовать
+
+## Примечание
+### Использованные плагины
+- [VContainer](https://github.com/hadashiA/VContainer) - хотел изучить именно его
+- [UniTask](https://github.com/Cysharp/UniTask) - для async/await, нахожу этот подход удобнее Unity Coroutine
+- [LitMotion](https://github.com/annulusgames/LitMotion) - для твинов
+
+### Билды
+Запостил в [релизы](https://github.com/T-bit/test_hidden_test/releases/tag/0.1.0)
+- Windows: [архив](https://github.com/T-bit/test_hidden_test/releases/download/0.1.0/Hidden_Test_windows_x64_0.1.0.zip)
+- WebGL: [githib.io](https://t-bit.github.io/HiddenTest/), [архив](https://github.com/T-bit/test_hidden_test/releases/download/0.1.0/Hidden_Test_webgl_0.1.0.zip). Esc, естественно не работает.
