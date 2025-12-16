@@ -18,6 +18,7 @@ namespace HiddenTest.Services
         private IClickable _lastClickable;
 
         private event Action<IClickable> ClickableClicked;
+        private event Action ExitClicked;
 
         private InputActions.GameActions GameActions => _inputActions.Game;
         private Vector2 PointerPosition => GameActions.Point.ReadValue<Vector2>();
@@ -33,6 +34,7 @@ namespace HiddenTest.Services
             _inputActions = new InputActions();
 
             GameActions.Click.performed += OnClickPerformed;
+            GameActions.Exit.performed += OnExitPerformed;
 
             _inputActions.Enable();
 
@@ -44,6 +46,7 @@ namespace HiddenTest.Services
             _inputActions.Disable();
 
             GameActions.Click.performed -= OnClickPerformed;
+            GameActions.Exit.performed -= OnExitPerformed;
 
             _inputActions.Dispose();
             _inputActions = null;
@@ -74,6 +77,11 @@ namespace HiddenTest.Services
             }
         }
 
+        private void OnExitPerformed(InputAction.CallbackContext context)
+        {
+            ExitClicked?.Invoke();
+        }
+
         private IClickable GetClickable()
         {
             var camera = Camera.main;
@@ -95,6 +103,12 @@ namespace HiddenTest.Services
         {
             add => ClickableClicked += value;
             remove => ClickableClicked -= value;
+        }
+
+        event Action IInputService.ExitClicked
+        {
+            add => ExitClicked += value;
+            remove => ExitClicked -= value;
         }
 
         #endregion

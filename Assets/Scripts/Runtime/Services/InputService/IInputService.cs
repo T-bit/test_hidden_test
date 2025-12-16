@@ -6,5 +6,6 @@ namespace HiddenTest.Services
     public interface IInputService : IService
     {
         event Action<IClickable> ClickableClicked;
+        event Action ExitClicked;
     }
 }
