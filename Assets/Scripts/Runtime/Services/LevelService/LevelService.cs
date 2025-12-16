@@ -90,6 +90,7 @@ namespace HiddenTest.Services
             }
 
             _inputService.ClickableClicked += OnClickableClicked;
+            _inputService.ExitClicked += OnExitClicked;
             _timer = Settings.TimerSeconds;
         }
 
@@ -99,6 +100,7 @@ namespace HiddenTest.Services
             _cancellationTokenSource.Dispose();
             _cancellationTokenSource = null;
             _inputService.ClickableClicked -= OnClickableClicked;
+            _inputService.ExitClicked -= OnExitClicked;
             _objects.Clear();
         }
 
@@ -138,6 +140,16 @@ namespace HiddenTest.Services
                     await _levelScreen.ShowObjectAsync(_nextIndex - 1, cancellationToken);
                 }
             }
+        }
+
+        private void OnExitClicked()
+        {
+            // TODO: Move to StateService or GameService
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
 
         #region ITickable
