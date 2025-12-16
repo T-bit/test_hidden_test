@@ -1,6 +1,8 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using HiddenTest.Extensions;
 using HiddenTest.Level;
+using LitMotion;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +16,9 @@ namespace HiddenTest.UI
 
         [SerializeField]
         private TMP_Text _text;
+
+        [SerializeField]
+        private CanvasGroup _canvasGroup;
 
         public int Index
         {
@@ -30,16 +35,33 @@ namespace HiddenTest.UI
 
         public UniTask ShowAsync(CancellationToken cancellationToken)
         {
-            // TODO: Operation provider
-            gameObject.SetActive(true);
-            return UniTask.CompletedTask;
+            using var cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, destroyCancellationToken);
+
+            // TODO: Serialized operation provider
+            return LMotion.Create(0f, 1f, 0.3f)
+                          .WithEase(Ease.InSine)
+                          .Bind(value => _canvasGroup.alpha = value)
+                          .ToUniTask(cancellationTokenSource.Token);
         }
 
         public UniTask HideAsync(CancellationToken cancellationToken)
         {
-            // TODO: Operation provider
-            gameObject.SetActive(false);
-            return UniTask.CompletedTask;
+            using var cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, destroyCancellationToken);
+
+            // TODO: Serialized operation provider
+            return LMotion.Create(1f, 0f, 0.3f)
+                          .WithEase(Ease.OutSine)
+                          .Bind(value => _canvasGroup.alpha = value)
+                          .ToUniTask(cancellationTokenSource.Token);
         }
+
+        #region Unity
+
+        private void OnValidate()
+        {
+            gameObject.SetSelfComponent(ref _canvasGroup);
+        }
+
+        #endregion
     }
 }

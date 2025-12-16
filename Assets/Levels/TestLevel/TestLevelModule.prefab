@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
       propertyPath: m_Name
-      value: TestLevel
+      value: TestLevelModule
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -23,6 +23,14 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3479260228265357138, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -779442121610830801, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794558362174998680, guid: c39ecffee8ee57b4f861c891660ac8fa, type: 3}
       propertyPath: m_IsActive
@@ -91,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
   _spriteRenderer: {fileID: 5155702645834761035}
+  _collider: {fileID: 391486607196859292}
 --- !u!60 &391486607196859292
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -181,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
   _spriteRenderer: {fileID: 1772085463384436865}
+  _collider: {fileID: 5323606221662666118}
 --- !u!60 &5323606221662666118
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -276,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
   _spriteRenderer: {fileID: 7100179452666032415}
+  _collider: {fileID: 7865185443250539714}
 --- !u!60 &7865185443250539714
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -392,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
   _spriteRenderer: {fileID: 1881910989734882274}
+  _collider: {fileID: 5617435455189098203}
 --- !u!60 &5617435455189098203
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -480,6 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
   _spriteRenderer: {fileID: 2265709867858669196}
+  _collider: {fileID: 8491978904759254498}
 --- !u!60 &8491978904759254498
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -566,6 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.Level.ObjectView
   _spriteRenderer: {fileID: 1519865422186094385}
+  _collider: {fileID: 4941002825588978337}
 --- !u!60 &4941002825588978337
 PolygonCollider2D:
   m_ObjectHideFlags: 0

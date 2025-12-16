@@ -9,13 +9,13 @@ namespace HiddenTest.UI
     {
         public UniTask ShowAsync(CancellationToken cancellationToken)
         {
-            // TODO: Operation provider
+            // TODO: Serialized operation provider
             return UniTask.CompletedTask;
         }
 
         public UniTask HideAsync(CancellationToken cancellationToken)
         {
-            // TODO: Operation provider
+            // TODO: Serialized operation provider
             return UniTask.CompletedTask;
         }
     }

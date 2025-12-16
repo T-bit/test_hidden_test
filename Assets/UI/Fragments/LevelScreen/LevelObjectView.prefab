@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: HiddenTest.Runtime::HiddenTest.UI.LevelObjectView
   _image: {fileID: 5671474062459440267}
   _text: {fileID: 7059644806658319843}
+  _canvasGroup: {fileID: 7865397415221493592}
 --- !u!1 &3556908330728472875
 GameObject:
   m_ObjectHideFlags: 0
