@@ -25,6 +25,9 @@ MonoBehaviour:
         _serviceSettings:
           rid: 2107441967232188490
         _levelModulePrefab: {fileID: 2886763854494048056, guid: f7c944941c6fa9b48aeb299fe41adcb5, type: 3}
+        _levelObjectViewSettings:
+          _showName: 0
+          _showImage: 1
     - rid: 2107441967232188490
       type: {class: LevelServiceSettings, ns: HiddenTest.Services, asm: HiddenTest.Runtime}
       data:
@@ -55,8 +58,13 @@ MonoBehaviour:
         _uiModulePrefab: {fileID: 4191862885187991678, guid: 463f1fcd357ded747855d4809b8df6d0, type: 3}
         _fragmentInstallers:
         - rid: 2107441967232188503
+        - rid: 2107441990003851600
     - rid: 2107441967232188503
       type: {class: LevelScreenInstaller, ns: HiddenTest.UI, asm: HiddenTest.Runtime}
       data:
         _viewPrefab: {fileID: 7148156617475892470, guid: b10b3aecf9024274181bfc49a92065da, type: 3}
         _levelObjectViewPrefab: {fileID: 4212666104267339963, guid: f458cacf78d469d44afaa3ebcd7ae259, type: 3}
+    - rid: 2107441990003851600
+      type: {class: MessageWindowInstaller, ns: HiddenTest.UI, asm: HiddenTest.Runtime}
+      data:
+        _viewPrefab: {fileID: 1893518622974884948, guid: 436fb940490f4ce4c8d65edd84de0ae0, type: 3}

@@ -7,16 +7,26 @@ namespace HiddenTest.UI
 {
     public abstract class FragmentView : MonoBehaviour
     {
+        protected virtual UniTask OnShowAsync(CancellationToken cancellationToken)
+        {
+            return UniTask.CompletedTask;
+        }
+
+        protected virtual UniTask OnHideAsync(CancellationToken cancellationToken)
+        {
+            return UniTask.CompletedTask;
+        }
+
         public UniTask ShowAsync(CancellationToken cancellationToken)
         {
             // TODO: Serialized operation provider
-            return UniTask.CompletedTask;
+            return OnShowAsync(cancellationToken);
         }
 
         public UniTask HideAsync(CancellationToken cancellationToken)
         {
             // TODO: Serialized operation provider
-            return UniTask.CompletedTask;
+            return OnHideAsync(cancellationToken);
         }
     }
 

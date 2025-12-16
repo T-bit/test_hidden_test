@@ -20,6 +20,7 @@ namespace HiddenTest.Services
         private readonly List<ObjectSettings> _objects;
         private readonly LevelModule _levelModule;
         private readonly ILevelScreen _levelScreen;
+        private readonly IMessageWindow _messageWindow;
 
         private float _timer;
         private int _nextIndex;
@@ -35,10 +36,12 @@ namespace HiddenTest.Services
         private bool LevelObjectViewNeeded => _nextIndex <= _objects.Count;
         private bool GameFinished => AllFound || (Settings.TimerSeconds > 0 && _timer <= 0);
 
-        public LevelService(ILevelScreen levelScreen, IInputService inputService, LevelModule levelModule, LevelServiceSettings settings, Transform rootTransform, IObjectResolver container)
+        public LevelService(ILevelScreen levelScreen, IMessageWindow messageWindow, IInputService inputService, LevelModule levelModule, LevelServiceSettings settings, Transform rootTransform,
+            IObjectResolver container)
             : base(settings, rootTransform, container)
         {
             _levelScreen = levelScreen;
+            _messageWindow = messageWindow;
             _inputService = inputService;
             _levelModule = levelModule;
             _objects = new List<ObjectSettings>();
@@ -127,8 +130,8 @@ namespace HiddenTest.Services
 
                 if (AllFound)
                 {
-                    // TODO Win message
-                    Debug.Log(WinMessage);
+                    _messageWindow.SetMessage(WinMessage);
+                    _messageWindow.ShowAsync(CancellationToken).Forget();
                 }
                 else if (LevelObjectViewNeeded)
                 {
@@ -151,8 +154,9 @@ namespace HiddenTest.Services
             if (_timer <= 0)
             {
                 _timer = 0;
-                // TODO: Loose message
-                Debug.Log(LooseMessage);
+
+                _messageWindow.SetMessage(LooseMessage);
+                _messageWindow.ShowAsync(CancellationToken).Forget();
             }
 
             _levelScreen.SetTimer(_timer);
